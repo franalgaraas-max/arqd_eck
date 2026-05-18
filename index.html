@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Arquitectura Introspectiva | Francisco Algarañas</title>
+    <title>ARQD.ECK · Arquitectura Introspectiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,361 +13,378 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            background: #050a0f;
+            color: #eef2f5;
+            scroll-behavior: smooth;
         }
 
-        /* Header / Hero */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 1.5rem;
-            text-align: center;
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1a24;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        /* header futurista */
+        .glass-nav {
+            background: rgba(5, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(59,130,246,0.3);
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
             letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-weight: 400;
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
-        .hero .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
-
-        .hero .price-badge {
-            background: #f59e0b;
-            color: #0f172a;
-            display: inline-block;
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        .btn-glass {
+            background: rgba(59,130,246,0.15);
+            border: 1px solid rgba(59,130,246,0.5);
             padding: 0.5rem 1.2rem;
             border-radius: 2rem;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 600;
         }
 
-        /* Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        /* Secciones */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+        /* hero */
+        .hero {
+            padding: 5rem 2rem;
             text-align: center;
-            color: #0f172a;
+            background: radial-gradient(circle at 10% 20%, #0b1620, #03070c);
         }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.8rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-        }
-
-        .price {
-            font-size: 2rem;
+        .hero h1 {
+            font-size: 3.5rem;
             font-weight: 800;
-            color: #f59e0b;
+            background: linear-gradient(135deg, #ffffff, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge {
+            background: #0f2b3d;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: #93c5fd;
             margin: 1rem 0;
         }
-
-        /* Testimonios */
-        .testimonial-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border-left: 4px solid #f59e0b;
-        }
-
-        /* Formulario contacto */
-        .contact-form {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 0.8rem;
-            font-family: inherit;
-            margin-bottom: 1rem;
-        }
-
-        button {
-            background: #0f172a;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background: #f59e0b;
-            color: #0f172a;
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
+        .price-chip {
+            background: #1e293b;
+            border: 1px solid #f59e0b;
+            color: #fbbf24;
+            padding: 0.5rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 800;
             display: inline-block;
-            text-decoration: none;
-            color: white;
-            padding: 0.7rem 1.2rem;
+            margin: 1rem auto;
+        }
+
+        /* contenedor */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* gallery cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .project-card {
+            background: #0f172a;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid #1e293b;
+            transition: all 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+        }
+        .project-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-color: #1e2a3a;
+        }
+        .project-info {
+            padding: 1.5rem;
+        }
+        .project-info h3 {
+            font-size: 1.4rem;
+        }
+
+        /* stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            background: #0a1018;
+            padding: 2rem;
             border-radius: 2rem;
-            font-weight: 600;
+            margin: 2rem 0;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+
+        /* contacto y redes */
+        .contact-section {
+            background: linear-gradient(145deg, #0b1220, #050a12);
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .social-icon {
+            background: #1e293b;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .social-icon:hover {
+            background: #3b82f6;
+            transform: scale(1.05);
+        }
+
+        button, .btn {
+            background: #3b82f6;
+            border: none;
+            padding: 0.75rem 1.8rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
         }
 
         footer {
-            background: #0f172a;
-            color: #94a3b8;
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            border-top: 1px solid #1e293b;
+            color: #5f6c84;
         }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .glass-nav { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <h1>🏗️ Francisco Algarañas</h1>
-        <div class="tagline">Arquitectura Introspectiva · Planos que conectan desde adentro</div>
-        <div class="price-badge">📐 Plano base: 20 USD</div>
+<div class="glass-nav">
+    <div class="logo">ARQD.ECK <span>· introspective architecture</span></div>
+    <div class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#ai-tools" class="btn-glass">IA Studio</a>
     </div>
+</div>
 
-    <!-- SERVICIOS -->
-    <div class="container">
-        <h2 class="section-title">📋 ¿Cómo funciona?</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>🧠 1. Contame tu idea</h3>
-                <p>Medidas del terreno, fotos, ubicación. Todo por WhatsApp o Instagram.</p>
-            </div>
-            <div class="card">
-                <h3>✏️ 2. Borrador en 3 días</h3>
-                <p>Recibís un PDF con distribución, medidas y orientación solar. Sin pago previo.</p>
-            </div>
-            <div class="card">
-                <h3>✅ 3. Pagás solo si te gusta</h3>
-                <p>Si el borrador te convence, abonás los 20 USD. Si no, lo ajustamos sin cargo.</p>
-            </div>
+<section class="hero">
+    <div class="badge">🧠 estudio global · fundado 2025</div>
+    <h1>Arquitectura que nace<br>desde adentro</h1>
+    <p style="max-width: 650px; margin: 1rem auto;">Diseñamos espacios que generan calma, funcionalidad y conexión emocional. +120 proyectos, 4 continentes.</p>
+    <div class="price-chip">✨ Plano base profesional → 20 USD</div>
+    <div style="margin-top: 1.5rem;">
+        <a href="#contacto" style="background:#3b82f6; padding:0.75rem 2rem; border-radius: 3rem; text-decoration: none; color: white; font-weight: 700;">COMENZAR PROYECTO</a>
+    </div>
+</section>
+
+<div class="container" id="proyectos">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">📐 Proyectos destacados</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-img" style="background-image: url('https://placehold.co/600x400/1e293b/3b82f6?text=Residential+Loft+Chile');"></div>
+            <div class="project-info"><h3>Loft Calma · Chile</h3><p>90m², hormigón visto + madera. Flujo introspectivo.</p></div>
         </div>
-
-        <h2 class="section-title">💰 Servicios y precios</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>📐 Plano base</h3>
-                <div class="price">20 USD</div>
-                <p>✅ Planta baja + planta alta (si aplica)<br>✅ Medidas y distribución<br>✅ Orientación solar sugerida<br>✅ Formato PDF</p>
-            </div>
-            <div class="card">
-                <h3>🏗️ Legajo técnico</h3>
-                <div class="price">Consultar</div>
-                <p>✅ Estructura (hormigón enclavado / acero)<br>✅ Instalaciones sanitarias y eléctricas<br>✅ Detalles constructivos<br>✅ Cómputos de materiales</p>
-            </div>
+        <div class="project-card">
+            <div class="project-img" style="background-image: url('https://placehold.co/600x400/1e293b/3b82f6?text=Seismic+House+Turkey');"></div>
+            <div class="project-info"><h3>Anti-sísmico · Turquía</h3><p>Estructura enclavada, estudio de normativa local.</p></div>
         </div>
-
-        <!-- TESTIMONIOS -->
-        <h2 class="section-title">🌍 Clientes internacionales</h2>
-        <div class="cards-grid">
-            <div class="testimonial-card">
-                <p><strong>⭐ Mustafa (Turquía)</strong><br>"Primer proyecto, muy importante. Francisco entendió mis necesidades sísmicas y me guió paso a paso."</p>
-            </div>
-            <div class="testimonial-card">
-                <p><strong>⭐ Isabela (Brasil)</strong><br>"Transformé mi idea en un plano real. Cozinha americana, área de serviço, todo perfecto."</p>
-            </div>
-            <div class="testimonial-card">
-                <p><strong>⭐ Ahmed (Internacional)</strong><br>"Introspective architecture made my house feel like home. Highly recommended."</p>
-            </div>
-        </div>
-
-        <!-- FORMULARIO DE CONTACTO -->
-        <h2 class="section-title">📩 ¿Empezamos tu proyecto?</h2>
-        <div class="contact-form">
-            <form id="contactForm">
-                <input type="text" id="nombre" placeholder="Tu nombre" required>
-                <input type="email" id="email" placeholder="Correo electrónico">
-                <input type="text" id="medidas" placeholder="Medidas del terreno (ej. 7x10 m)" required>
-                <textarea id="mensaje" rows="4" placeholder="Contame más sobre tu idea... (ubicación, fotos, sueño)" required></textarea>
-                <button type="submit">🚀 Enviar consulta</button>
-            </form>
-            <div style="text-align: center; margin-top: 1rem;">
-                <a href="https://wa.me/5493412345678?text=Hola%20Francisco%2C%20quiero%20empezar%20mi%20proyecto%20de%20arquitectura%20introspectiva." class="btn-whatsapp" target="_blank">📱 Contactar por WhatsApp</a>
-            </div>
+        <div class="project-card">
+            <div class="project-img" style="background-image: url('https://placehold.co/600x400/1e293b/3b82f6?text=Container+Home+BR');"></div>
+            <div class="project-info"><h3>Eco Modular · Brasil</h3><p>Reutilización, rapidez ensamblaje y grúa.</p></div>
         </div>
     </div>
+</div>
 
-    <!-- GENERADOR DE POSTS IA (bonus) -->
-    <div class="container" style="background: #f1f5f9; border-radius: 2rem; margin-top: 1rem;">
-        <h2 class="section-title">🤖 Generador de Posts IA (para Instagram / LinkedIn)</h2>
-        <div style="max-width: 800px; margin: 0 auto; background: white; border-radius: 1.5rem; padding: 1.5rem;">
+<div class="container" id="servicios">
+    <div class="stats">
+        <div class="stat-item"><div class="stat-number">120+</div><div>planos entregados</div></div>
+        <div class="stat-item"><div class="stat-number">14</div><div>países</div></div>
+        <div class="stat-item"><div class="stat-number">3 días</div><div>borrador</div></div>
+        <div class="stat-item"><div class="stat-number">$20</div><div>USD · base</div></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 2rem;">
+        <div style="background:#0f172a; padding: 1.5rem; border-radius: 1.5rem;"><h3>📘 Plano base</h3><p>PDF con medidas, orientación solar, distribución. Borrador en 72h.<br><strong>$20 USD</strong></p></div>
+        <div style="background:#0f172a; padding: 1.5rem; border-radius: 1.5rem;"><h3>🏗️ Legajo técnico</h3><p>Estructuras (hormigón enclavado/acero), instalaciones, cómputos, análisis sísmico.</p><p style="color:#fbbf24;">Presupuesto personalizado</p></div>
+        <div style="background:#0f172a; padding: 1.5rem; border-radius: 1.5rem;"><h3>🤖 AI Studio</h3><p>Generador de posts para Instagram/LinkedIn con IA. Texto profesional + hashtags.</p></div>
+    </div>
+</div>
+
+<div class="container" id="ai-tools">
+    <div style="background: #0a101e; border-radius: 2rem; padding: 2rem;">
+        <h2 style="text-align: center;">🤖 Generador IA de Posts</h2>
+        <p style="text-align: center;">Redactá contenido para Instagram y LinkedIn en segundos. Claude AI integrado.</p>
+        <div style="max-width: 700px; margin: 2rem auto;">
             <label>🔐 API Key Claude (Anthropic)</label>
-            <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." style="margin-bottom: 0.5rem;">
-            <button id="saveKeyBtn" style="background: #475569; margin-bottom: 1rem;">💾 Guardar Key</button>
-            <span id="keyStatus" style="font-size: 0.8rem;"></span>
-
-            <label>📝 Tema del post</label>
-            <textarea id="topicInput" rows="3" placeholder="Ej: Casa de 3 dormitorios 7x10, cocina integrada, terraza, luz natural..."></textarea>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
-                <div>
-                    <label>Tono</label>
-                    <select id="toneSelect">
-                        <option value="profesional">Profesional</option>
-                        <option value="cálido y cercano">Cálido y cercano</option>
-                        <option value="inspirador">Inspirador</option>
-                    </select>
-                </div>
-                <div>
-                    <label>CTA</label>
-                    <select id="ctaSelect">
-                        <option value="Comentá 'PLANO'">Comentá "PLANO"</option>
-                        <option value="Comentá 'PROYECTO'">Comentá "PROYECTO"</option>
-                        <option value="Escribime al DM">Escribime al DM</option>
-                    </select>
-                </div>
+            <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." style="width:100%; padding:0.6rem; margin:0.5rem 0; background:#0f172a; border:1px solid #334155; color:white; border-radius:1rem;">
+            <button id="saveKeyBtn" style="background:#334155;">💾 Guardar Key</button>
+            <span id="keyStatus" style="margin-left: 1rem; font-size:0.8rem;"></span>
+            <textarea id="topicInput" rows="3" placeholder="Ej: Casa 3 dormitorios 7x10, cocina integrada, terraza, luz natural..." style="width:100%; margin:1rem 0; background:#0f172a; border:1px solid #334155; color:white;"></textarea>
+            <div style="display: flex; gap:1rem;">
+                <select id="toneSelect" style="background:#0f172a; color:white;"><option>profesional</option><option>cálido y cercano</option><option>inspirador</option></select>
+                <select id="ctaSelect" style="background:#0f172a; color:white;"><option>Comentá 'PLANO'</option><option>Comentá 'PROYECTO'</option><option>Escribime al DM</option></select>
+                <button id="generateBtn">✨ Generar</button>
             </div>
-
-            <button id="generateBtn" style="width: 100%;">✨ Generar Posts (Instagram + LinkedIn)</button>
-            <div id="errorMsg" style="margin-top: 1rem;"></div>
-            <div id="postsResult" style="margin-top: 1.5rem;"></div>
+            <div id="errorMsg" style="margin-top: 0.5rem;"></div>
+            <div id="postsResult" style="margin-top: 2rem;"></div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>Arquitectura Introspectiva · Francisco Algarañas · Planos que nacen desde adentro</p>
-        <p style="margin-top: 0.5rem;">📍 Argentina · Atiendo en 🇪🇸 🇬🇧 🇵🇹 🇹🇷 🇷🇺</p>
-    </footer>
+<div class="container" id="contacto">
+    <div class="contact-section">
+        <h2>🌍 ¿Tu próximo proyecto?</h2>
+        <p style="margin: 1rem 0;">Análisis sísmico, hormigón enclavado, steel frame, prefabricado — asesoría global.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/arqd.eck/" target="_blank" class="social-icon">📷</a>
+            <a href="https://wa.me/5493425473294" target="_blank" class="social-icon">💬</a>
+            <a href="#" class="social-icon">🔗</a>
+        </div>
+        <p>📞 +54 9 342 5473294 · ✉️ estudio@arqdeck.com</p>
+        <div style="margin-top: 1rem;">
+            <a href="https://wa.me/5493425473294?text=Hola%20ARQD.ECK%20quiero%20empezar%20mi%20proyecto%20introspectivo" style="background:#25D366; padding:0.7rem 2rem; border-radius: 3rem; text-decoration: none; color: white; display: inline-block;">📱 WhatsApp directo</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem;">📍 Argentina · Proyectos en 🇹🇷 🇧🇷 🇺🇸 🇮🇳 🇪🇸</p>
+    </div>
+</div>
 
-    <script>
-        // API KEY LOGIC (mismo que generador anterior)
-        const apiKeyInput = document.getElementById('apiKeyInput');
-        const saveKeyBtn = document.getElementById('saveKeyBtn');
-        const keyStatus = document.getElementById('keyStatus');
-        const generateBtn = document.getElementById('generateBtn');
-        const topicInput = document.getElementById('topicInput');
-        const toneSelect = document.getElementById('toneSelect');
-        const ctaSelect = document.getElementById('ctaSelect');
-        const postsResult = document.getElementById('postsResult');
-        const errorMsg = document.getElementById('errorMsg');
+<footer>
+    ARQD.ECK · introspective architecture · planos que conectan desde adentro. <br>© 2026 · Todos los derechos reservados
+</footer>
 
-        const savedKey = localStorage.getItem('claude_api_key');
-        if (savedKey) {
-            apiKeyInput.value = savedKey;
-            keyStatus.innerHTML = '✅ Key cargada';
-            keyStatus.style.color = '#059669';
-        }
+<script>
+    // API KEY + generación de posts (mismo script funcional)
+    const apiInput = document.getElementById('apiKeyInput');
+    const saveBtn = document.getElementById('saveKeyBtn');
+    const keyStatusSpan = document.getElementById('keyStatus');
+    const genBtn = document.getElementById('generateBtn');
+    const topicArea = document.getElementById('topicInput');
+    const toneSelect = document.getElementById('toneSelect');
+    const ctaSelect = document.getElementById('ctaSelect');
+    const postsDiv = document.getElementById('postsResult');
+    const errorDiv = document.getElementById('errorMsg');
 
-        saveKeyBtn.addEventListener('click', () => {
-            const key = apiKeyInput.value.trim();
-            if (key.startsWith('sk-ant-api03-') && key.length > 30) {
-                localStorage.setItem('claude_api_key', key);
-                keyStatus.innerHTML = '✅ Key guardada correctamente';
-                keyStatus.style.color = '#059669';
-            } else {
-                keyStatus.innerHTML = '⚠️ Formato de key incorrecto';
-                keyStatus.style.color = '#dc2626';
-            }
+    const saved = localStorage.getItem('claude_api_key');
+    if (saved) { apiInput.value = saved; keyStatusSpan.innerHTML = '✅ key lista'; keyStatusSpan.style.color = '#4ade80'; }
+
+    saveBtn.onclick = () => {
+        const k = apiInput.value.trim();
+        if (k.startsWith('sk-ant-api03-') && k.length > 30) {
+            localStorage.setItem('claude_api_key', k);
+            keyStatusSpan.innerHTML = '✅ guardada';
+        } else { keyStatusSpan.innerHTML = '⚠️ formato inválido'; }
+    };
+    async function callClaude(prompt) {
+        const key = localStorage.getItem('claude_api_key');
+        if (!key) throw new Error('API key missing');
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST', headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+            body: JSON.stringify({ model: 'claude-3-haiku-20240307', max_tokens: 800, temperature: 0.7, messages: [{ role: 'user', content: prompt }] })
         });
-
-        async function callClaude(prompt) {
-            const apiKey = localStorage.getItem('claude_api_key');
-            if (!apiKey) throw new Error('No hay API key guardada');
-            const res = await fetch('https://api.anthropic.com/v1/messages', {
-                method: 'POST',
-                headers: {
-                    'x-api-key': apiKey,
-                    'anthropic-version': '2023-06-01',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    model: 'claude-3-haiku-20240307',
-                    max_tokens: 800,
-                    temperature: 0.7,
-                    messages: [{ role: 'user', content: prompt }]
-                })
-            });
-            if (!res.ok) throw new Error(`Error API: ${res.status}`);
-            const data = await res.json();
-            return data.content[0].text;
-        }
-
-        generateBtn.addEventListener('click', async () => {
-            const topic = topicInput.value.trim();
-            if (!topic) {
-                errorMsg.innerHTML = '<div style="color:#dc2626;">Escribí un tema</div>';
-                return;
-            }
-            if (!localStorage.getItem('claude_api_key')) {
-                errorMsg.innerHTML = '<div style="color:#dc2626;">Guardá tu API key primero</div>';
-                return;
-            }
-            errorMsg.innerHTML = '';
-            postsResult.innerHTML = '<div>⏳ Generando posts...</div>';
-            const tone = toneSelect.value;
-            const cta = ctaSelect.value;
-            const instaPrompt = `Post para Instagram sobre: ${topic}. Tono: ${tone}. Termina con CTA: "${cta}". Incluye emojis y hashtags.`;
-            const linkedinPrompt = `Post para LinkedIn sobre: ${topic}. Tono: ${tone} pero profesional. Termina con CTA: "${cta}" adaptado. Concepto de arquitectura introspectiva.`;
-            try {
-                const [insta, linkedin] = await Promise.all([callClaude(instaPrompt), callClaude(linkedinPrompt)]);
-                postsResult.innerHTML = `
-                    <div style="background:#eef2ff; padding:1rem; border-radius:1rem; margin-bottom:1rem;">
-                        <strong>📸 INSTAGRAM</strong> <button onclick="navigator.clipboard.writeText(\`${insta.replace(/`/g, '\\`')}\`)" style="background:#3b82f6; padding:0.2rem 0.8rem;">Copiar</button>
-                        <pre style="white-space:pre-wrap; margin-top:0.5rem;">${insta}</pre>
-                    </div>
-                    <div style="background:#f1f5f9; padding:1rem; border-radius:1rem;">
-                        <strong>💼 LINKEDIN</strong> <button onclick="navigator.clipboard.writeText(\`${linkedin.replace(/`/g, '\\`')}\`)" style="background:#3b82f6; padding:0.2rem 0.8rem;">Copiar</button>
-                        <pre style="white-space:pre-wrap; margin-top:0.5rem;">${linkedin}</pre>
-                    </div>
-                `;
-            } catch (e) {
-                errorMsg.innerHTML = `<div style="color:#dc2626;">Error: ${e.message}. Revisá saldo en Anthropic.</div>`;
-                postsResult.innerHTML = '';
-            }
-        });
-    </script>
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        return data.content[0].text;
+    }
+    genBtn.onclick = async () => {
+        const topic = topicArea.value.trim();
+        if (!topic) { errorDiv.innerHTML = '<span style="color:#f87171;">⚠️ Escribí un tema</span>'; return; }
+        if (!localStorage.getItem('claude_api_key')) { errorDiv.innerHTML = '<span style="color:#f87171;">🔐 Guardá API Key</span>'; return; }
+        errorDiv.innerHTML = ''; postsDiv.innerHTML = '<div>⏳ generando con Claude...</div>';
+        const tone = toneSelect.value, cta = ctaSelect.value;
+        const instaPrompt = `Post para Instagram sobre: ${topic}. Tono: ${tone}. CTA: "${cta}". Emojis, hashtags.`;
+        const liPrompt = `Post para LinkedIn sobre: ${topic}. Tono profesional + cálido. Mencioná arquitectura introspectiva. CTA: "${cta}".`;
+        try {
+            const [insta, linkedin] = await Promise.all([callClaude(instaPrompt), callClaude(liPrompt)]);
+            postsDiv.innerHTML = `
+                <div style="background:#0f172a; padding:1rem; border-radius:1rem; margin-bottom:1.5rem;">
+                    <div style="display:flex; justify-content:space-between;"><strong>📸 INSTAGRAM</strong> <button onclick="navigator.clipboard.writeText(\`${insta.replace(/`/g, '\\`')}\`)">Copiar</button></div>
+                    <pre style="white-space:pre-wrap; margin-top:0.8rem;">${insta}</pre>
+                </div>
+                <div style="background:#0f172a; padding:1rem; border-radius:1rem;">
+                    <div style="display:flex; justify-content:space-between;"><strong>💼 LINKEDIN</strong> <button onclick="navigator.clipboard.writeText(\`${linkedin.replace(/`/g, '\\`')}\`)">Copiar</button></div>
+                    <pre style="white-space:pre-wrap; margin-top:0.8rem;">${linkedin}</pre>
+                </div>
+            `;
+        } catch(e) { errorDiv.innerHTML = `<span style="color:#f87171;">❌ Error: ${e.message} (revisá saldo Anthropic)</span>`; postsDiv.innerHTML = ''; }
+    };
+</script>
 </body>
 </html>
